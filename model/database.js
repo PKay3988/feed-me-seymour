@@ -10,7 +10,7 @@ const con = mysql.createConnection({
   host: DB_HOST || "127.0.0.1",
   user: DB_USER || "root",
   password: DB_PASS,
-  database: DB_NAME || "feedme",
+  database: DB_NAME || "plants",
   multipleStatements: true
 });
 
@@ -18,15 +18,20 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 
-  let sql = "DROP TABLE if exists plantfood; CREATE TABLE plantfood(id INT NOT NULL AUTO_INCREMENT, text VARCHAR(40) not null, complete BOOLEAN, PRIMARY KEY (id));";
-  con.query(sql, function (err, result) {
+  let sql = "DROP TABLE if exists plantsTable; CREATE TABLE plantsTable (plantId INT NOT NULL AUTO_INCREMENT, plantName VARCHAR(255) NOT NULL, username VARCHAR(255) NOT NULL, wateringFrequency INT NULL, isWatered BOOLEAN, lastWatered TIMESTAMP NULL, PRIMARY KEY (plantId));";
+  let sql2 = "DROP TABLE if exists usersTable; CREATE TABLE usersTable (username VARCHAR(255) NOT NULL, emailAddress VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, phoneNumber INT NULL, PRIMARY KEY (username));";
+ con.query(sql, function (err, result) {
     if (err) throw err;
-    console.log("Table creation `plantfood` was successful!");
+    console.log("Table creation `plantTables` was successful!");
 
     console.log("Closing...");
   });
 
+  con.query(sql2, function (err, result) {
+    if (err) throw err;
+    console.log("Table creation `usersTables` was successful!");
+
+    console.log("Closing...");
+  });
   con.end();
 });
-
-

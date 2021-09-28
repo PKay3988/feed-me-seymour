@@ -1,7 +1,30 @@
 import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  let [plant, setPlants] = useState([]);
+
+const addPlant = async (plantName) => {
+  let options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(plant),
+  };
+  
+  try {
+    let response = await fetch("/plants", options);
+    if (response.ok) {
+      let plants = await response.json();
+      setPlants(plant);
+    } else {
+      console.log("server error:", response.status, response.statusText);
+    }
+  } catch (err) {
+    console.log("Network error:", err.message);
+  }
+} 
+
   return (
     <div className="App">
       <header className="App-header">
