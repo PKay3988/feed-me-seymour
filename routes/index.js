@@ -47,13 +47,10 @@ router.get('/:plants/:plantId', async function(req, res, next) {
 
 /* POST new plant*/
 router.post('/:plants', async function(req, res, next) {
-  let {plantName} = req.body.plantName; 
+  let {plantName , username} = req.body; 
 
   try {
-    let sql = `
-      INSERT INTO plantsTable (plantName, username)
-      VALUES ('${plantName}', 'Kayla')
-      `;
+    let sql = `INSERT INTO plantsTable (plantName, username) VALUES ('${plantName}', '${username}')`;
     await db(sql); 
     let plants = await getAllItems();
     res.status(201).send(plants);
@@ -80,24 +77,23 @@ router.delete('/:plants/:plantId', async function(req, res, next) {
   }
 });
 
-/*PUT 
-router.put('/:plants/:plantsId', async function(req, res, next) {
-  let {plantName} = req.body.plantName; 
+/*PUT */
+router.put('/:plants/:plantId', async function(req, res, next) {
+  let { plantName } = req.body; 
+  let { plantId } = req.params; 
 
   try {
-    let sql = 
-    /* await db(`ALTER plantsTable where plantID = ${plantId}`);
-      INSERT INTO plantsTable (plantName, username)
-      VALUES ('${plantName}', 'Kayla')
-      `;
-    await db(sql); 
-    let plants = await getAllItems();
-    res.status(201).send(plants);
-  } catch (err) {
-    res.status(500).send({error: err});
+    if((await plantExists(plantId)) === false) {
+      res.status(404).send({ error: "Not found" }); 
+      return;
+    } 
+
+      await db(`UPDATE plantsTable SET plantName ='${plantName}' where plantId = ${plantId}`);
+      let plants = await getAllItems();
+      res.status(201).send(plants);
+    } catch (err) {
+      res.status(500).send({error: err});
   }
 });
-*/
-
 
 module.exports = router;
