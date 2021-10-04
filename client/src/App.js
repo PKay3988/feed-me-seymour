@@ -1,11 +1,11 @@
-import { response } from 'express';
+
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
   let [plants, setPlants] = useState([]);
-  const formInitialState = {plantName: "", username: ""};
-  let [formData, setFormData] = useState([formInitialState]);
+  const formInitialState = {plantId: "", plantName: "", username: "", wateringFrequency: "", isWatered: "", lastWatered:""};
+  let [formData, setFormData] = useState(formInitialState);
 
   const getPlants = () => {
     fetch('/:plants')
@@ -18,33 +18,42 @@ function App() {
       });
   };
 
-useEffect(()=> {
-  getPlants();
+  useEffect(()=> {
+    getPlants();
 }, []);
 
-  const handleInputChange = (event) => {
+  function handleInputChange(event) {
     // let newId = plants.length;
     //newPlant.id = newId;
     let { name, value /*,username, value2*/ } = event.target;
-    setFormData({...formData, [name]: value, /*[username]: value2*/});
+    setFormData({...formData, [name]: value /*,[username]: value2*/});
   }
     // add newPlant to State
     // setPlants((state) => [...state, newPlant]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
-    addPlant(formData.plant/*, formData.username*/);
+    console.log("string");
+    addPlant(formData.name/*, formData.username*/);
     setPlants(formInitialState);
   };
 
-//   const addPlant = async (name/*, username*/) => {
-//     let plant = { name/*, username*/ };
-//     let options = {
-//       method: "POST",
-//       headers: {"Content-Type": "application/json" },
-//       body: JSON.stringify(plant),
-//     };
+  const addPlant = async (plantName/*, username*/) => {
+    console.log(plantName)
+    let plant = { plantName/*, username*/ };
+    let options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(plant),
+    };
+
+    try {
+      await fetch("/students", options);
+      getPlants();
+    } catch (err) {
+      console.log("Network error:", err);
+    }
+};
 
 //     try {
 //       let response = await fetch("/plants", options);
@@ -65,32 +74,33 @@ useEffect(()=> {
 //       body: JSON.stringify(plant),
 //     };
 
-//     try {
-//       await fetch("/students", options);
-//       getPlants();
-//     } catch (err) {
-//       console.log("Network error:", err);
-//     }
-// } ;
-
   return (
-    <div className="App">
-    <h3> Build Your Garden </h3><header className="button-container"> 
+    <div className="App p-3 mb-2 bg-info text-dark">
+    <h3 > Build Your Plant Hutch </h3><header className="button-container"> 
       <form>
        <label className="plantadd">New Plant</label>
        <input
        type= "text"
-       onChange={(e) => handleInputChange(e)}
-       name="plantadder"
-       value={ formData.plant }
+       onChange={e => handleInputChange(e)}
+       name="plantName"
+       value={ formData.plantName }
        placeholder="Your plant here"
        />
 
-        <button
+        <button onSubmit={handleSubmit} type="submit"
         className="button" 
         > Add Plant
         </button>
         </form>
+
+        <ul>
+          {plants.map((p) => (
+          <li key={p.id}>
+            {p.id}
+            {p.plantName}
+            </li>
+          ))}
+        </ul>
         
         
     </header>  

@@ -47,10 +47,10 @@ router.get('/:plants/:plantId', async function(req, res, next) {
 
 /* POST new plant*/
 router.post('/:plants', async function(req, res, next) {
-  let {plantName , username} = req.body; 
+  // let {plantName , username} = req.body; 
 
   try {
-    let sql = `INSERT INTO plantsTable (plantName, username) VALUES ('${plantName}', '${username}')`;
+    let sql = `INSERT INTO plantsTable (plantName, username) VALUES ('${req.body.plantName}', '${req.body.username}')`;
     await db(sql); 
     let plants = await getAllItems();
     res.status(201).send(plants);
