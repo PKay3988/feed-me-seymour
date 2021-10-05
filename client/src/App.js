@@ -25,8 +25,8 @@ function App() {
   function handleInputChange(event) {
     // let newId = plants.length;
     //newPlant.id = newId;
-    let { name, value, username, value2 } = event.target;
-    setFormData({...formData, [name]: value, [username]: value2});
+    let { name, value } = event.target;
+    setFormData({...formData, [name]: value});
   }
     // add newPlant to State
     // setPlants((state) => [...state, newPlant]);
@@ -40,6 +40,7 @@ function App() {
 
   const addPlant = async (plantName, username) => {
     //console.log(plantName)
+    console.log(plants);
     let plant = { plantName, username };
     let options = {
       method: "POST",
@@ -78,8 +79,8 @@ function App() {
 
   return (
     <div className="p-3 mb-2 bg-success text-white">
-    <h3 > Build Your Plant Hutch </h3><header className="button-container"> 
-      <form>
+    <h3 className> Feed Me, Seymore </h3><header className="button-container"> 
+      <form className="grid-container" onSubmit={handleSubmit}>
        <label className="plantadd">New Plant</label>
        <input
        type= "text"
@@ -98,14 +99,16 @@ function App() {
        placeholder="Username here"
        />
 
-        <button onSubmit={handleSubmit} type="submit"
-        className="button" 
+        <button className="submit" 
         > Add Plant
         </button>
         </form>
         </header>
         
-        <div className="App p-3 mb-2 bg-info text-dark">
+        <div className="App p-3 mb-2 text-dark bg-opacity-10">
+        <h3 className="plantdisplay">Your plants</h3>
+        </div>
+        <div>
         <ul>
           {plants.map((p) => (
           <li key={p.plantId}>

@@ -1,19 +1,44 @@
 .App {
   text-align: center;
 }
-/*
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.grid-container {
+  display: flex;
+  align-content: stretch;
+  flex-wrap:wrap-reverse;
+  order: 5;
+  gap: 50px;
+  margin: 25px;
+}
+/* 
+.title {
+grid-area: title;
+} */
+
+/* .label {
+  grid-area: label;
+} */
+
+/* .plantadd {
+  grid-area: plantadd;
+} */
+
+/* .usernameadd {
+  grid-area: newPlant;
+} */
+
+
+.yourPlants {
+  grid-area: yourPlants;
 }
 
+/*
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-*/
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,17 +48,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-/*
-.App-link {
-  color: #61dafb;
-}
+}*/
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+ul {
+  list-style-type: none;
+}
