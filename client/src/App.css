@@ -5,7 +5,7 @@
 .title {
   display: block;
   text-align: center;
-   ;
+
 }
 
 .card {
@@ -14,6 +14,7 @@
   flex-direction: column;
   border: 1px rgb(35, 54, 5) solid;
   margin: 3mm;
+  text-align: center;
   background-color: rgb(26, 114, 45);
 }
 
@@ -30,11 +31,12 @@
   flex-wrap:wrap-reverse;
   order: 5;
   gap: 80px;
-  /* margin-top: 25mm; */
+  margin-top: 15mm;
   margin-block-start: 25px;
-  /* margin-left:50mm;
-  margin-bottom: 25mm; */
+  margin-left:50mm;
+  margin-bottom: 25mm;
   border: 2px rgb(35, 54, 5) dashed;
+  color:antiquewhite;
 }
 
 .featured-container {
