@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
@@ -23,13 +22,9 @@ function App() {
 }, []);
 
   function handleInputChange(event) {
-    // let newId = plants.length;
-    //newPlant.id = newId;
     let { name, value } = event.target;
     setFormData({...formData, [name]: value});
   }
-    // add newPlant to State
-    // setPlants((state) => [...state, newPlant]);
 
   function handleSubmit(event, newPlant) {
     event.preventDefault();
@@ -58,28 +53,13 @@ function App() {
     }
 };
 
-//     try {
-//       let response = await fetch("/plants", options);
-//       if (response.ok) {
-//         let plants = await response.json();
-//         setPlants(plants);
-//       }
-//     } catch (err) {
-//       console.log("Network error:", err);
-//     }
-// };
-
-//   const addPlant = async (name) => {
-//     let plant = { name/*, username*/ };
-//     let options = {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(plant),
-//     };
 
   return (
-    <div className="p-3 mb-2 bg-success text-white">
-    <h3 className> Feed Me, Seymore </h3><header className="button-container"> 
+    <div className="title p-3 mb-2 bg-success text-white">
+
+    <h1 className="title"> Feed Me, Seymore </h1>
+
+    {/* <header className="button-container" > Add Plants Here: </header> */}
       <form className="grid-container" onSubmit={handleSubmit}>
        <label className="plantadd">New Plant</label>
        <input
@@ -103,25 +83,45 @@ function App() {
         > Add Plant
         </button>
         </form>
-        </header>
+       
+          <h3>{plants.plantName}</h3>       
+        <div className="row row-cols-sm-3 row-cols-md-3">
+        {plants.map((plants) => (
+          <div className= "col-sm">
+            <div className="col">
+          </div>
+          <div class="col">
+            </div>
+          <div class="col">
+              </div>
+            <div className="card">
+              <div className="card-body shadow-border-0">
+                <h4> {plants.plantName}</h4>
+                 <div className="header">
+                 Last Watered: {plants.lastWatered}
+                 <div className="card-header shadow-border-0">
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+              
+                
+                
+       
+        ))}
+
         
-        <div className="App p-3 mb-2 text-dark bg-opacity-10">
-        <h3 className="plantdisplay">Your plants</h3>
-        </div>
-        <div>
-        <ul>
-          {plants.map((p) => (
-          <li key={p.plantId}>
-            {p.id}
-            {p.plantName}
-            </li>
-          ))}
-        </ul>
+
+
+
         
-        </div>
+     </div>
+     </div>
+   
       
     
-    </div>
+    
   );
 }
 

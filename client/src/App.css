@@ -2,10 +2,44 @@
   text-align: center;
 }
 
+.title {
+  display: block;
+  text-align: center;
+   ;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px rgb(35, 54, 5) solid;
+  margin: 3mm;
+  background-color: rgb(26, 114, 45);
+}
+
+.header {
+  height: 30%;
+  background: #90a76c;
+  color: white;
+  text-align: center;
+}
+
 .grid-container {
   display: flex;
   align-content: stretch;
   flex-wrap:wrap-reverse;
+  order: 5;
+  gap: 80px;
+  /* margin-top: 25mm; */
+  margin-block-start: 25px;
+  /* margin-left:50mm;
+  margin-bottom: 25mm; */
+  border: 2px rgb(35, 54, 5) dashed;
+}
+
+.featured-container {
+  display: block;
+  align-items: center;
   order: 5;
   gap: 50px;
   margin: 25px;
