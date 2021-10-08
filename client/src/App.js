@@ -144,7 +144,7 @@ useEffect(()=> {
     {/* <header className="button-container" > Add Plants Here: </header> */}
       <form className="grid-container" onSubmit={handleSubmit}>
       <fieldset>
-        <legend><h3>Add new plants to your collection</h3></legend>
+        <legend><h3>Add New Plants to your Collection</h3></legend>
 
        <label className="plantadd">New Plant:</label>
        <input
@@ -216,41 +216,41 @@ useEffect(()=> {
       value={toSend.from_name}
       onChange={handleChange}
     /> */}
-
-     <label className="to">To:</label>
+      <fieldset>
+        <legend><h3>Send an Email Reminder</h3></legend>
+     <label className="to2">To Whom:</label>
      <input id= "to"
       className="to-box"
       type='text'
       name='to_name'
-      placeholder='Recipient Name'
+      placeholder='Recipient name'
       value={toSend.to_name}
       onChange={handleChange}
-    />
+    /> <br/>
     
-    {/* <label for = "email" className="email">Your Email:</label>
+    <label className="email">Your Email:</label>
   
     <input id="email"
-      className="email"
+      className="email2"
       type='text'
       name='reply_to'
-      placeholder='Your email'
+      placeholder='Receiver email'
       value={toSend.reply_to}
       onChange={handleChange}
-    />
+  />
     
-    <label for = "message" className="message">Your Reminder:</label> */}
-
-    <input
+    {/* <label className="message">Your Reminder:</label>
+    <input id="message"
       className="message-box"
       type='text'
       name='message'
       placeholder='Your message'
       value={toSend.message}
       onChange={handleChange}
-    />
-    
+    /> <br/> */}
      
-    <button type='submit'>Submit</button>
+    <button className="submit" type='submit'>Send Reminder</button>
+    </fieldset>
   </form>
     </div>
     </div>

@@ -44,7 +44,6 @@ justify-content: center;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
   margin-left: 45em;
-  padding-top: 1em;
   padding-left: 1em;
   padding-right:1em;
   border: 4px rgb(35, 54, 5) dashed;
@@ -53,20 +52,59 @@ justify-content: center;
   border-radius: 25px
 }
 
-.email {
+.email-notify {
   display: flex;
-  gap: 50px;
-  margin-top: 15mm;
-  width: 90%;
+  width: 40%;
+  align-items: center;
+  flex-wrap:wrap-reverse;
+  gap: 8px;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  margin-left: 45em;
+  padding-left: 1em;
+  padding-right:1em;
+  color: #1d5e25;
+  border:4px rgb(35, 54, 5) dashed;
+  box-shadow:lawngreen;
+  border-radius: 25px
+}
+
+.to2 {
+  margin-bottom: 20px;
+  padding-left: 1em;
   padding-top: 1em;
-  margin-left:50mm;
-  margin-right:50mm;
-  margin-bottom: 500mm;
-  border: 2px rgb(35, 54, 5) dashed;
-  color:#faebd7;
+  font-weight: bold;
+}
+
+.email {
+  margin-bottom: 20px;
+  padding-left: em;
+  padding-top: 1em;
+  font-weight: bold;
+}
+
+.submit {
+  display:flex;
+  justify-content:right;
+  margin-bottom: 1em; 
+  margin-left: 40em;
 }
 
 input{
+  margin-bottom: 20px;
+  margin-left:50mm;
+  margin-right:50mm;
+  padding-left: 10mm;
+}
+
+.email2{
+  margin-bottom: 20px;
+  margin-left:50mm;
+  margin-right:50mm;
+  padding-left: 10mm;
+}
+
+.to-box{
   margin-bottom: 20px;
   margin-left:50mm;
   margin-right:50mm;
@@ -98,24 +136,6 @@ legend h3 {
   font-weight: bold;
 }
 
-.to {
-  width: 25%;
-}
-
-.to-box {
-  width: 25%;
-  
-}
-
-.email-notify {
-  width: 100%;
-}
-
-.message-box {
-  width: 25%;
-}
-
-
 /* 
 .featured-container {
   display: block;
@@ -123,22 +143,6 @@ legend h3 {
   order: 5;
   gap: 50px;
   margin: 25px;
-} */
-/* 
-.title {
-grid-area: title;
-} */
-
-/* .label {
-  grid-area: label;
-} */
-
-/* .plantadd {
-  grid-area: plantadd;
-} */
-
-/* .usernameadd {
-  grid-area: newPlant;
 } */
 
 nav ul {
@@ -156,12 +160,12 @@ nav ul {
 
 
 
-
+/* 
 @media (prefers-reduced-motion: no-preference) {
   
-}
+} */
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -170,7 +174,7 @@ nav ul {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 ul {
   list-style-type: none;
