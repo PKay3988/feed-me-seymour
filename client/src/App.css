@@ -1,12 +1,20 @@
 .App {
-  text-align: center;
+display: grid;
+justify-content: center;
 }
+/* .title {
+display: grid;
+justify-content: center;
+} */
 
 .title {
   display: block;
   text-align: center;
-
 }
+
+/* input[type=text]:focus {
+  border: 3px solid rgb(94, 98, 150);
+} */
 
 .card {
   width: 100%;
@@ -21,31 +29,101 @@
 .header {
   height: 30%;
   background: #90a76c;
-  color: white;
+  color: rgb(53, 50, 50);
   text-align: center;
+  padding-bottom: .5em;
 }
 
 .grid-container {
   display: flex;
-  align-content: stretch;
+  width: 40%;
+  align-content: center;
+  align-items: center;
   flex-wrap:wrap-reverse;
-  order: 5;
   gap: 80px;
-  margin-top: 15mm;
-  margin-block-start: 25px;
-  margin-left:50mm;
-  margin-bottom: 25mm;
-  border: 2px rgb(35, 54, 5) dashed;
-  color:antiquewhite;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  margin-left: 45em;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right:1em;
+  border: 4px rgb(35, 54, 5) dashed;
+  color:#1d5e25;
+  box-shadow:lawngreen;
+  border-radius: 25px
 }
 
+.email {
+  display: flex;
+  gap: 50px;
+  margin-top: 15mm;
+  width: 90%;
+  padding-top: 1em;
+  margin-left:50mm;
+  margin-right:50mm;
+  margin-bottom: 500mm;
+  border: 2px rgb(35, 54, 5) dashed;
+  color:#faebd7;
+}
+
+input{
+  margin-bottom: 20px;
+  margin-left:50mm;
+  margin-right:50mm;
+  padding-left: 10mm;
+}
+
+.submit-btn {
+  display:flex;
+  justify-content:right;
+  margin-bottom: 1em; 
+  margin-left: 85%;
+}
+
+legend h3 {
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+}
+
+.plantadd {
+  padding-left: 5em;
+  padding-top: 1em;
+  font-weight: bold;
+}
+
+.usernameadd {
+  padding-left: 5em;
+  padding-bottom: 1em;
+  font-weight: bold;
+}
+
+.to {
+  width: 25%;
+}
+
+.to-box {
+  width: 25%;
+  
+}
+
+.email-notify {
+  width: 100%;
+}
+
+.message-box {
+  width: 25%;
+}
+
+
+/* 
 .featured-container {
   display: block;
   align-items: center;
   order: 5;
   gap: 50px;
   margin: 25px;
-}
+} */
 /* 
 .title {
 grid-area: title;
@@ -63,16 +141,24 @@ grid-area: title;
   grid-area: newPlant;
 } */
 
-
-.yourPlants {
-  grid-area: yourPlants;
+nav ul {
+  list-style: none;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgb(35, 54, 5);
+  margin-bottom: 20px;
 }
 
-/*
+#nav ul li{
+  color: white;
+  text-decoration: none;
+}
+
+
+
+
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  
 }
 
 .App-header {
@@ -84,7 +170,7 @@ grid-area: title;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}*/
+}
 
 ul {
   list-style-type: none;

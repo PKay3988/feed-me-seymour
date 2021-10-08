@@ -49,6 +49,15 @@ FeedMeSeymore is an app to help you stay on track with keeping your plants alive
 - Run `npm start` in project directory to start the Express server on port 5000
 - In another terminal, do `cd client` and run `npm start` to start the client in development mode with hot reloading in port 3000.
 
+### _EmailJS Integration_
+
+- Run `npm install emailjs-com`in new terminal window to import module or the required method.
+
+```bash
+import{ init } from 'emailjs-com';
+init("yourUserId");
+```
+
 ## Technologies
 
 - React
