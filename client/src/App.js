@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { send } from 'emailjs-com';
+import  Modal from'./Component/Modal';
 //import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams} from 'react-router-dom';
 
 function App() {
   let [plants, setPlants] = useState([]);
   const formInitialState = {plantId: "", plantName: "", username: "", wateringFrequency: "", isWatered: "", lastWatered:"" };
-  const [formData, setFormData] = useState(formInitialState);
+  const [formData, setFormData] = useState(formInitialState); 
+  const currentTime = new Date();
+  const timestamp = currentTime.toLocaleString('en-US', { timeZone: 'America/Chicago' });
+  const [openCard, setOpenCard] = useState(false);
   const [toSend, setToSend] = useState({
     from_name: '',
     to_name: '',
     message: '',
     reply_to: '',
-  });
+  }); 
+  
+    // const currentDate = new Date();
+  // const currentDayOfMonth = currentDate.getDate();
+  // const currentMonth = currentDate.getMonth(); // Be careful! January is 0, not 1
+  // const currentYear = currentDate.getFullYear();
+  // const dateString = currentDayOfMonth + "-" + (currentMonth + 1) + "-" + currentYear;  
+ 
 
   const getPlants = () => {
     fetch('/plants')
@@ -57,6 +68,52 @@ function App() {
     }
   };
 
+
+  const handleWater = () => {
+    let timestamp = new Date().toLocaleTimeString('en-US', { timeZone: 'America/Chicago' });
+    addWater(formData.plantName, timestamp);
+  };
+
+  const addWater = async (plantName, lastWatered) => {
+    //console.log(plantName)
+    // console.log(plants);
+    let water = { plantName, lastWatered};
+    let options = {
+      method: "PUT",
+      headers: { 
+        "Content-Type": "application/json" 
+      },
+      body: JSON.stringify(water),
+    };
+
+    try {
+      await fetch("/plants", options);
+      getPlants();
+    } catch (err) {
+      console.log("Network error:", err);
+    }
+  };
+
+  // const addTimestamp = async (plantName, lastWatered) => {
+  //   //console.log(plantName)
+  //   // console.log(plants);
+  //   let watered = { plantName, lastWatered };
+  //   let options = {
+  //     method: "POST",
+  //     headers: { 
+  //       "Content-Type": "application/json" 
+  //     },
+  //     body: JSON.stringify(watered),
+  //   };
+
+  //   try {
+  //     await fetch("/plants", options);
+  //     getPlants();
+  //   } catch (err) {
+  //     console.log("Network error:", err);
+  //   }
+  // };
+
   const onSubmit = (e) => {
       e.preventDefault();
       send(
@@ -78,7 +135,7 @@ function App() {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
 
-  // function Home() {
+    // function Home() {
   //   return <h2/>;
   // }
   
@@ -94,7 +151,12 @@ function App() {
   //   return <h2>Plant Hutches</h2>;
   // }
 
+  // function handleClick() {
+  //   const varCheckBox= document.getElementById("myCheck")
+  //   let newdDate = [...] + plants.lastWatered
+  // }
 
+ 
 useEffect(()=> {
   getPlants();
 }, []);
@@ -153,7 +215,7 @@ useEffect(()=> {
        name="plantName"
        value={ formData.plantName }
        placeholder="Your plant here"
-       />
+       /><br/>
        
        <label className="usernameadd">Username:</label>
        <input
@@ -179,7 +241,7 @@ useEffect(()=> {
         </form>
         
        
-        <div className="row row-cols-sm-2">
+        <div className="row row-cols-sm-1">
           {plants.map((plant) => (
           
           <div key ={plant.plantId} className= "col-sm">
@@ -193,8 +255,15 @@ useEffect(()=> {
               <div className="card-body shadow-border-0">
                 </div>
                 <h4> { plant.plantName }</h4>
+                <h5>  </h5>
+                
+                <div>
+                  {/* <input type="checkbox" id= "myCheck" onChange={handleClick()}/>  */}
+                  <button type= "submit" className="watered-button" onClick={handleWater}>Watered</button>
+                  </div>
                  <div className="header">
                  Last Watered: { plant.lastWatered }
+                
                 
                  </div>
                  <div className="card-header shadow-border-0">
@@ -203,6 +272,19 @@ useEffect(()=> {
             </div>  
             
         ))}
+
+     </div>
+
+     <div>
+       <button className="openModalBtn"
+    onClick={() =>{
+      setOpenCard(true);
+      }}
+      >
+        Open
+        </button>
+    { openCard && <Modal closeCard={setOpenCard} />}
+
 
      </div>
 

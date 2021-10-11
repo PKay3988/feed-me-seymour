@@ -32,18 +32,20 @@ justify-content: center;
   color: rgb(53, 50, 50);
   text-align: center;
   padding-bottom: .5em;
+  padding-top: .5em;
+  margin-top: 1em;
 }
 
 .grid-container {
   display: flex;
-  width: 40%;
+  width: 100%;
   align-content: center;
   align-items: center;
   flex-wrap:wrap-reverse;
   gap: 80px;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
-  margin-left: 45em;
+  margin-left: 1em;
   padding-left: 1em;
   padding-right:1em;
   border: 4px rgb(35, 54, 5) dashed;
@@ -54,13 +56,13 @@ justify-content: center;
 
 .email-notify {
   display: flex;
-  width: 40%;
+  width: 100%;
   align-items: center;
   flex-wrap:wrap-reverse;
   gap: 8px;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
-  margin-left: 45em;
+  margin-left: 1em;
   padding-left: 1em;
   padding-right:1em;
   color: #1d5e25;
@@ -125,13 +127,13 @@ legend h3 {
 }
 
 .plantadd {
-  padding-left: 5em;
+  padding-left: 1em;
   padding-top: 1em;
   font-weight: bold;
 }
 
 .usernameadd {
-  padding-left: 5em;
+  padding-left: 1em;
   padding-bottom: 1em;
   font-weight: bold;
 }
@@ -158,6 +160,13 @@ nav ul {
   text-decoration: none;
 }
 
+/* .watered-button {
+  background-color: red;
+} */
+
+.watered-button:focus {     
+  background-color:green;    
+}
 
 
 /* 
