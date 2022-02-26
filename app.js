@@ -8,6 +8,9 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// Location of static assets
+app.use(express.static(path.join(__dirname, '/client/build')));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -16,5 +19,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+// Respond with index.html for unmatched routes
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build', 'index.html'));
+    });
 
 module.exports = app;
