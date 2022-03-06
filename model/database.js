@@ -18,7 +18,7 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 
-  let sql = "DROP TABLE if exists plantsTable; CREATE TABLE plantsTable (plantId INT NOT NULL AUTO_INCREMENT, plantName VARCHAR(255) NOT NULL, username VARCHAR(255) NOT NULL, wateringFrequency INT NULL, isWatered TINYINT(1) DEFAULT(0) NOT NULL, lastWatered TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, PRIMARY KEY (plantId));";
+  let sql = "DROP TABLE if exists plantsTable; CREATE TABLE plantsTable (plantId INT NOT NULL AUTO_INCREMENT, plantName VARCHAR(255) NOT NULL, username VARCHAR(255) NOT NULL, wateringFrequency INT NULL, isWatered TINYINT(1) DEFAULT 0 NOT NULL, lastWatered TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, PRIMARY KEY (plantId));";
   let sql2 = "DROP TABLE if exists usersTable; CREATE TABLE usersTable (username VARCHAR(255) NOT NULL, emailAddress VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, phoneNumber INT NOT NULL, PRIMARY KEY (username));";
  con.query(sql, function (err, result) {
     if (err) throw err;
