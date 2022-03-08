@@ -8,8 +8,8 @@ function App() {
   let [plants, setPlants] = useState([]);
   const formInitialState = {plantId: "", plantName: "", username: "", wateringFrequency: "", isWatered: "", lastWatered:"" };
   const [formData, setFormData] = useState(formInitialState); 
-  const currentTime = new Date();
-  const timestamp = currentTime.toLocaleString('en-US', { timeZone: 'America/Chicago' });
+  // const currentTime = new Date();
+  // const timestamp = currentTime.toLocaleString('en-US', { timeZone: 'America/Chicago' });
   const [openCard, setOpenCard] = useState(false);
   const [toSend, setToSend] = useState({
     from_name: '',
